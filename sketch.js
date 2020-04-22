@@ -78,7 +78,7 @@ function draw() {
       trex.velocityY = -10;
       playSound("jump.mp3");
     }
-    if (count>0 && count%100 === 0){
+    if (score>0 && score%100 === 0){
       playSound("checkPoint.mp3");
     }
     trex.velocityY = trex.velocityY + 0.8
