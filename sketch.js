@@ -74,13 +74,15 @@ function draw() {
   
   if(gameState === PLAY){
     score = score + Math.round(getFrameRate()/60);
-    if(keyDown("space")) {
-      trex.velocityY = -10;
-      playSound("jump.mp3");
+    if(keyDown("space")&& trex.y >= 159) {
+      trex.velocityY = -12;
+      //playSound("jump.mp3");
     }
+    /*
     if (score>0 && score%100 === 0){
       playSound("checkPoint.mp3");
     }
+    */
     trex.velocityY = trex.velocityY + 0.8
     if (ground.x < 0){
       ground.x = ground.width/2;
@@ -91,9 +93,9 @@ function draw() {
     
     //End the game when trex is touching the obstacle
     if(obstaclesGroup.isTouching(trex)){
-      playSound("jump.mp3");
+      //playSound("jump.mp3");
       gameState = END;
-      playSound("die.mp3");
+      //playSound("die.mp3");
     }
 
   }
@@ -179,6 +181,8 @@ function spawnObstacles() {
 }
 function reset(){
    gameState = PLAY;
+  
+  ground.velocityX = -(6 + 3*score/100);
   
   gameOver.visible = false;
   restart.visible = false;
